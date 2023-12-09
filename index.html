@@ -8,6 +8,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
     <title>NaverClone</title>
     <style>
+      a:visited {
+        color: #000;
+      }
       /* css도 root안에 변수를 쓸 수 있다 */
       :root {
         --color_title: #080808;
@@ -308,14 +311,157 @@
         width: 44px;
         height: 44px;
       }
-
       /* 가상선택자는 inline속성 이므로 크기의 값을 주려면 block속성을 주어야한다. */
+
+      /* main css */
+      #main {
+        margin-top: 51px;
+        display: flex;
+      }
+      #main-left {
+        width: 830px;
+        margin-right: 30px;
+      }
+      #main-right {
+        width: 420px;
+      }
+      #main-left-ad,
+      #main-right-ad {
+        background: gray;
+        border-radius: 8px;
+      }
+      #main-left-ad {
+        height: 130px;
+        margin-bottom: 16px;
+      }
+      #main-right-ad {
+        height: 240px;
+        margin-bottom: 16px;
+      }
+      #main-login {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 164px;
+        margin-bottom: 16px;
+        padding: 21px 20px 18px;
+        font-size: 1.4rem;
+      }
+      #main-login > div:last-of-type {
+        font-size: 1.3rem;
+        margin: 0 auto;
+      }
+      #main-login > div:last-of-type > a {
+        text-decoration: none;
+      }
+      #main-login > div:last-of-type > a:nth-of-type(2)::before,
+      #main-login > div:last-of-type > a:nth-of-type(2)::after {
+        content: "";
+        display: inline-block;
+        width: 1px;
+        height: 12px;
+        background-color: #d3d5d7;
+        background-color: var(--color_dot_divider);
+        margin: 4px 12px 0;
+        vertical-align: top;
+      }
+
+      #main-login-button {
+        margin-top: 13px;
+        padding: 17px 0;
+        background-color: #03c75a;
+        color: white;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 4px;
+      }
+      #main-newstand {
+        height: 426px;
+      }
+      #main-weather {
+        height: 236px;
+      }
+      #main-shopping {
+        height: 560px;
+      }
+      #main-weather,
+      #main-stock {
+        padding: 0 18px;
+      }
+      #main-weather > div,
+      #main-stock > div {
+        border-top: 1px solid var(--color_border_in);
+      }
+      #main-weather > header,
+      #main-stock > header {
+        box-sizing: border-box;
+        height: 52px;
+        padding: 6px 0px;
+      }
+      section[id^="main"] {
+        border-radius: 8px;
+        margin-bottom: 16px;
+        box-shadow: 0 0 0 1px #e3e5e8, 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+      }
+      #main-newstand a {
+        text-decoration: none;
+      }
+      #main-newstand {
+        display: flex;
+        flex-direction: column;
+      }
+      #main-newstand-top {
+        flex: 1;
+        padding: 18px 20px;
+      }
+      #main-newstand a:hover {
+        text-decoration: underline;
+      }
+      #main-newstand header {
+        font-size: 1.6rem;
+        color: rgba(8, 8, 8, 0.5);
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 18px;
+      }
+      #main-newstand footer {
+        border-top: 1px solid var(--color_border_in);
+        padding: 10px 0 11px;
+      }
+      #main-newstand-grid {
+        margin-top: 18px;
+        display: grid;
+        border: 1px solid gray;
+        border-radius: 4px;
+        grid-template-rows: 56px 56px 56px 56px;
+        grid-template-columns: 131px 131px 131px 131px 131px 131px;
+        justify-content: center;
+        align-items: center;
+      }
+      #main-newstand-grid div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid gainsboro;
+        width: 100%;
+        height: 99%;
+      }
+      #main-newstand-gray {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 50px;
+        padding: 12px 20px;
+        background-color: var(--color_option_bg);
+        border-radius: 4px;
+      }
     </style>
   </head>
   <body>
     <div id="wrap">
       <div id="wrap-center">
-        <div id="header">
+        <header id="header">
           <button id="header-hamburger">
             <!-- before -->
             <div></div>
@@ -331,7 +477,7 @@
             <div></div>
             <!-- after -->
           </button>
-        </div>
+        </header>
         <div id="search">
           <!-- form을 사용하면 "ENTER"를 눌러도 적용이된다. -->
           <form action="">
@@ -349,7 +495,7 @@
             </button>
           </form>
         </div>
-        <div id="nav">
+        <nav id="nav">
           <ul>
             <li>
               <a href="">
@@ -411,8 +557,72 @@
               </a>
             </li>
           </ul>
-        </div>
-        <div id="main"></div>
+        </nav>
+        <main id="main">
+          <div id="main-left">
+            <aside id="main-left-ad"></aside>
+            <section id="main-newstand">
+              <div id="main-newstand-top">
+                <header>
+                  <a href="#">뉴스스탠드</a>
+                  <a href="#">언론사편집</a>
+                  <a href="#">엔터</a>
+                  <a href="#">스포츠</a>
+                  <a href="#">경제</a>
+                </header>
+                <div id="main-newstand-gray">
+                  <div><a href="#">전체언론사</a> <a href="#">연합뉴스</a></div>
+                  <div><a href="#">뉴스스탠드</a> <a href="#">뉴스룸</a></div>
+                </div>
+                <div id="main-newstand-grid" style="overflow: scroll">
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                  <div>언론사</div>
+                </div>
+              </div>
+            </section>
+            <section id="main-shopping"></section>
+          </div>
+          <div id="main-right">
+            <section id="main-login">
+              <div>네이버를 더 안전하고 편리하게 이용하세요</div>
+              <a href="#" id="main-login-button">로그인</a>
+              <div>
+                <a href="#">아이디 찾기</a>
+                <a href="#">비밀번호 찾기</a>
+                <a href="#">회원가입</a>
+              </div>
+            </section>
+            <aside id="main-right-ad"></aside>
+            <section id="main-weather">
+              <header>날씨</header>
+            </section>
+            <section id="main-stock">
+              <header>증시</header>
+            </section>
+          </div>
+        </main>
       </div>
     </div>
   </body>
